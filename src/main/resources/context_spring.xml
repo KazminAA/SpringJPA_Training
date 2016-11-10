@@ -11,15 +11,14 @@
   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <tx:annotation-driven/>
-    <context:component-scan base-package="org.demo.models"/>
-    <context:component-scan base-package="org.demo.daos"/>
-    <context:component-scan base-package="org.demo.services"/>
+    <context:component-scan base-package="org.demo.*"/>
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="DriverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="Url" value="jdbc:mysql://localhost:3306/training_db?useSSL=false&amp;useUnicode=true"/>
         <property name="Username" value="root"/>
         <property name="Password" value="granDMasTer@23"/>
     </bean>
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="training-Spring-JPA"/>
         <property name="dataSource" ref="dataSource"/>
