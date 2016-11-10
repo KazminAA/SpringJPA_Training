@@ -91,4 +91,11 @@ public class ProductsEntity {
         result = 31 * result + qtyOnHand;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "ProductsEntity{" +
+                "[" + mfrId + "] [" + productId + "] [" + description + "] [" + price +
+                "] [" + qtyOnHand + "]}";
+    }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Alexandr on 10.11.2016.
  */
-@Service
+@Service("comservice")
 public class CommonServicesImpl<T> implements Services<T> {
 
     @Autowired

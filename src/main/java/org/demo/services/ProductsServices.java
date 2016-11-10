@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Alexandr on 10.11.2016.
  */
-@Service
+@Service("productservice")
 public class ProductsServices implements Services<ProductsEntity> {
 
     @Autowired
