@@ -9,5 +9,4 @@
         <property name="maxIdleTime" value="300"/>
         <property name="idleConnectionTestPeriod" value="3000"/>
         <property name="testConnectionOnCheckout" value="true"/>
-
     </bean>
