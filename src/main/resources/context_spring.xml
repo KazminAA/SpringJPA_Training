@@ -13,17 +13,12 @@
     <tx:annotation-driven/>
     <context:component-scan base-package="models"/>
     <context:component-scan base-package="daos"/>
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/training_db?useSSL=false&amp;useUnicode=true"/>
-        <property name="user" value="root"/>
-        <property name="password" value="granDMasTer@23"/>
-        <property name="maxPoolSize" value="20"/>
-        <property name="minPoolSize" value="5"/>
-        <property name="maxStatements" value="50"/>
-        <property name="maxIdleTime" value="300"/>
-        <property name="idleConnectionTestPeriod" value="3000"/>
-        <property name="testConnectionOnCheckout" value="true"/>
+    <context:component-scan base-package="services"/>
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="DriverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="Url" value="jdbc:mysql://localhost:3306/training_db?useSSL=false&amp;useUnicode=true"/>
+        <property name="Username" value="root"/>
+        <property name="Password" value="granDMasTer@23"/>
     </bean>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="training-Spring-JPA"/>
