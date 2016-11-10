@@ -1,4 +1,4 @@
-package models;
+package org.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

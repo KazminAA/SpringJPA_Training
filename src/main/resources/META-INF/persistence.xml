@@ -4,11 +4,11 @@
              version="2.0">
     <persistence-unit name="training-Spring-JPA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>models.CustomersEntity</class>
-        <class>models.OfficesEntity</class>
-        <class>models.OrdersEntity</class>
-        <class>models.ProductsEntity</class>
-        <class>models.SalesrepsEntity</class>
+        <class>org.demo.models.CustomersEntity</class>
+        <class>org.demo.models.OfficesEntity</class>
+        <class>org.demo.models.OrdersEntity</class>
+        <class>org.demo.models.ProductsEntity</class>
+        <class>org.demo.models.SalesrepsEntity</class>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

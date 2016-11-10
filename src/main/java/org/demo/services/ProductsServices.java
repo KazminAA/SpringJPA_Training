@@ -1,7 +1,7 @@
-package services;
+package org.demo.services;
 
-import daos.Dao;
-import models.ProductsEntity;
+import org.demo.daos.Dao;
+import org.demo.models.ProductsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

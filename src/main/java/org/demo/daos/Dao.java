@@ -1,4 +1,4 @@
-package daos;
+package org.demo.daos;
 
 import java.util.List;
 
