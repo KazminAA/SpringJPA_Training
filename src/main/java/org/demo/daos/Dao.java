@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface Dao<T> {
     List<T> getAll(Class<T> tClass);
+
+    void merge(T entity);
 }

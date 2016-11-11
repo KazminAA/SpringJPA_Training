@@ -20,4 +20,9 @@ public class ProductsServices implements Services<ProductsEntity> {
     public List<ProductsEntity> getAll(Class<ProductsEntity> productsEntityClass) {
         return productsEntityDao.getAll(ProductsEntity.class);
     }
+
+    @Override
+    public void merge(ProductsEntity entity) {
+        productsEntityDao.merge(entity);
+    }
 }

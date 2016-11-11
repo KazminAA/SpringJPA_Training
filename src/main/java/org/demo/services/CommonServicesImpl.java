@@ -19,4 +19,9 @@ public class CommonServicesImpl<T> implements Services<T> {
     public List getAll(Class tClass) {
         return dao.getAll(tClass);
     }
+
+    @Override
+    public void merge(T entity) {
+        dao.merge(entity);
+    }
 }
