@@ -24,4 +24,9 @@ public class CommonServicesImpl<T> implements Services<T> {
     public void merge(T entity) {
         dao.merge(entity);
     }
+
+    @Override
+    public void delete(T entity) {
+        dao.delete(entity);
+    }
 }

@@ -56,7 +56,6 @@ public class PersistenceContext {
         jpaProperies.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
         jpaProperies.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
         jpaProperies.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        jpaProperies.put("hibernate.ejb.naming_strategy", env.getRequiredProperty("hibernate.ejb.naming_strategy"));
 
         entityManagerFactoryBean.setJpaProperties(jpaProperies);
 

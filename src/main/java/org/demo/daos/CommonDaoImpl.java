@@ -27,4 +27,10 @@ public class CommonDaoImpl<T> implements Dao<T> {
     public void merge(T entity) {
         em.merge(entity);
     }
+
+    @Transactional
+    @Override
+    public void delete(T entity) {
+        em.remove(entity);
+    }
 }

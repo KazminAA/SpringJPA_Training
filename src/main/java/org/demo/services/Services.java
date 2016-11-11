@@ -9,4 +9,6 @@ public interface Services<T> {
     List<T> getAll(Class<T> tClass);
 
     void merge(T entity);
+
+    void delete(T entity);
 }
