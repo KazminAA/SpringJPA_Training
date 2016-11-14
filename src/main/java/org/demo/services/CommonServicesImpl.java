@@ -29,4 +29,15 @@ public class CommonServicesImpl<T> implements Services<T> {
     public void delete(T entity) {
         dao.delete(entity);
     }
+
+    @Override
+    public void deleteByField(Class<T> tClass, String fieldName, String value) {
+        dao.deleteByField(tClass, fieldName, value);
+    }
+
+    @Override
+    public List<T> getByField(Class<T> tClass, String fieldName, String value) {
+        List<T> result = dao.getByField(tClass, fieldName, value);
+        return result;
+    }
 }
