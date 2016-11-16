@@ -8,7 +8,11 @@ import java.util.List;
 public interface Dao<T> {
     List<T> getAll(Class<T> tClass);
 
+    List<T> getByField(Class<T> tClass, String fieldName, String value);
+
     void merge(T entity);
 
     void delete(T entity);
+
+    void deleteByField(Class<T> tClass, String fieldName, String value);
 }
