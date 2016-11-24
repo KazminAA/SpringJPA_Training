@@ -1,5 +1,6 @@
 package org.demo.app;
 
+import org.demo.models.OfficesEntity;
 import org.demo.models.ProductsEntity;
 import org.demo.services.Services;
 import org.springframework.context.ApplicationContext;
@@ -14,8 +15,11 @@ public class MainApp {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext("org.demo");//new ClassPathXmlApplicationContext("context_spring.xml");
         Services<ProductsEntity> productsServices = (Services<ProductsEntity>) ctx.getBean("comservice");
+        Services<OfficesEntity> officesServices = (Services<OfficesEntity>) ctx.getBean("comservice");
         //ProductsServices productsServices = (ProductsServices) ctx.getBean("productservice");
         List<ProductsEntity> entityList = productsServices.getAll(ProductsEntity.class);
         entityList.forEach(System.out::println);
+        List<OfficesEntity> officesEntities = officesServices.getByField(OfficesEntity.class, "city", "Denver");
+        officesEntities.forEach(System.out::println);
     }
 }

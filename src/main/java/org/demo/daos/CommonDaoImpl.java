@@ -27,7 +27,9 @@ public class CommonDaoImpl<T> implements Dao<T> {
     public List<T> getByField(Class<T> tClass, String fieldName, String value) {
         String query = "select en from %s as en where en.%s = :val";
         query = String.format(query, tClass.getSimpleName(), fieldName);
-        List<T> result = em.createQuery(query, tClass).getResultList();
+        List<T> result = em.createQuery(query, tClass)
+                .setParameter("val", value)
+                .getResultList();
         return result;
     }
 

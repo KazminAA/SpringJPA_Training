@@ -16,7 +16,7 @@ public class CommonServicesImpl<T> implements Services<T> {
     private Dao<T> dao;
 
     @Override
-    public List getAll(Class tClass) {
+    public List<T> getAll(Class tClass) {
         return dao.getAll(tClass);
     }
 
