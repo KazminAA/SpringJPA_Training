@@ -6,9 +6,8 @@ import org.demo.services.Services;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.Arrays;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Alexandr on 10.11.2016.
@@ -23,8 +22,16 @@ public class MainApp {
         entityList.forEach(System.out::println);
         List<OfficesEntity> officesEntities = officesServices.getByField(OfficesEntity.class, "city", "Denver");
         officesEntities.forEach(System.out::println);
-        List<Integer> numbers = Arrays.asList(3, 2, 2, 5, 3, 7, 10);
+        /*List<Integer> numbers = Arrays.asList(3, 2, 2, 5, 3, 7, 10);
         List<Integer> sql = numbers.stream().map(i -> i * i).distinct().collect(Collectors.toList());
-        sql.forEach(System.out::print);
+        sql.forEach(System.out::print);*/
+        productsServices.deleteByField(ProductsEntity.class, "mfrId", "MOA");
+        ProductsEntity product = new ProductsEntity();
+        product.setMfrId("MOA");
+        product.setProductId("XXCA");
+        product.setDescription("Maximizer");
+        product.setPrice(BigDecimal.valueOf(153.50));
+        product.setQtyOnHand(30);
+        productsServices.merge(product);
     }
 }
