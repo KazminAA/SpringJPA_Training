@@ -5,12 +5,14 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Alexandr on 25.11.2016.
  */
+@Component
 @Aspect
 public class SericesAdvice {
     @Autowired

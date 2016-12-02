@@ -1,12 +1,8 @@
 package org.demo.configuration;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.demo.services.SericesAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -23,6 +19,9 @@ import java.util.Properties;
  */
 
 @Configuration
+@ComponentScan(basePackages = {
+        "org.demo"
+})
 @EnableAspectJAutoProxy
 @PropertySource("classpath:/application.properties")
 @EnableJpaRepositories(basePackages = {
@@ -71,9 +70,9 @@ public class PersistenceContext {
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
-
+/*
     @Bean
     SericesAdvice sericesAdvice() {
         return new SericesAdvice();
-    }
+    }*/
 }
