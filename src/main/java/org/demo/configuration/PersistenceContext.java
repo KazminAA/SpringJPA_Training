@@ -1,6 +1,7 @@
 package org.demo.configuration;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -35,12 +36,30 @@ public class PersistenceContext {
 
     @Bean(destroyMethod = "close")
     DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
+       /* BasicDataSource dataSource = new BasicDataSource();
 
         dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
         dataSource.setUrl(env.getRequiredProperty("db.url"));
         dataSource.setUsername(env.getRequiredProperty("db.user"));
         dataSource.setPassword(env.getRequiredProperty("db.pwd"));
+*/
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
+        hikariConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
+        hikariConfig.setUsername(env.getRequiredProperty("db.user"));
+        hikariConfig.setPassword(env.getRequiredProperty("db.pwd"));
+
+        hikariConfig.setPoolName("hikariCPPool");
+        hikariConfig.setMaximumPoolSize(Integer.parseInt(env.getRequiredProperty("max_pool_size")));
+        hikariConfig.setConnectionTestQuery("SELECT 1");
+
+        hikariConfig.addDataSourceProperty("dataSource.cachePrepStmts", "true");
+        hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSize", "250");
+        hikariConfig.addDataSourceProperty("dataSource.prepStmtCacheSqlLimit", "2048");
+        hikariConfig.addDataSourceProperty("dataSource.useServerPrepStmts", "true");
+
+
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 
         return dataSource;
     }
