@@ -3,8 +3,10 @@ package org.demo.configuration;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -26,7 +28,7 @@ import java.util.Properties;
 @EnableAspectJAutoProxy
 @PropertySource("classpath:/application.properties")
 @EnableJpaRepositories(basePackages = {
-        "org.demo"
+        "org.demo.daos"
 })
 @EnableTransactionManagement
 public class PersistenceContext {
@@ -70,7 +72,7 @@ public class PersistenceContext {
 
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("org.demo");
+        entityManagerFactoryBean.setPackagesToScan("org.demo.models");
 
         Properties jpaProperies = new Properties();
         jpaProperies.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
@@ -94,4 +96,8 @@ public class PersistenceContext {
     SericesAdvice sericesAdvice() {
         return new SericesAdvice();
     }*/
+@Bean
+public BeanPostProcessor persistenceTranslation() {
+    return new PersistenceExceptionTranslationPostProcessor();
+}
 }

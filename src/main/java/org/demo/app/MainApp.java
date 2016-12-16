@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Alexandr on 10.11.2016.
  */
 public class MainApp {
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext("org.demo");//new ClassPathXmlApplicationContext("context_spring.xml");
         Services<ProductsEntity> productsServices = (Services<ProductsEntity>) ctx.getBean("comservice");
         Services<OfficesEntity> officesServices = (Services<OfficesEntity>) ctx.getBean("comservice");
